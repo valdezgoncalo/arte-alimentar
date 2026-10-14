@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111412">
+  <meta name="description" content="Arte Alimentar — ementa digital em português, inglês e espanhol.">
+  <title>Arte Alimentar | Ementa Digital</title>
+
+  <style>
+    :root {
+      --bg: #0b0d0c;
+      --panel: #171b18;
+      --green: #20c56b;
+      --white: #f8faf8;
+      --muted: #b8c1bb;
+      --line: #2c3930;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      padding: 28px 18px 26px;
+      text-align: center;
+      background: radial-gradient(
+        ellipse at top,
+        #153d28 0%,
+        #111412 65%
+      );
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      display: block;
+      width: 155px;
+      max-width: 55%;
+      height: auto;
+      margin: 0 auto 16px;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    .tag {
+      margin: 8px 0 0;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .intro {
+      max-width: 720px;
+      margin: 16px auto 0;
+      color: var(--white);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 880px;
+      margin: auto;
+      padding: 22px 14px 36px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .lang {
+      padding: 11px 16px;
+      border: 1px solid #526157;
+      border-radius: 999px;
+      background: #202521;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .lang.active {
+      background: var(--green);
+      color: #08130c;
+      border-color: var(--green);
+    }
+
+    .hint {
+      margin: 0 0 24px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 2px 14px;
+      font-size: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .section-title::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--line);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 245px), 1fr)
+      );
+      gap: 12px;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 88px;
+      padding: 14px;
+      border: 1px solid #303a33;
+      border-radius: 15px;
+      background: var(--panel);
+      box-shadow: 0 5px 18px #0003;
+    }
+
+    .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: var(--green);
+      color: #08130c;
+      font-size: 19px;
+      font-weight: 950;
+    }
+
+    .details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .name {
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+
+    .price {
+      color: var(--green);
+      font-size: 16px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .qrbox {
+      max-width: 440px;
+      margin: 34px auto 0;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #141815;
+      text-align: center;
+    }
+
+    .qrbox h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .qrbox p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .qrbox img {
+      display: block;
+      width: 200px;
+      height: 200px;
+      margin: 18px auto;
+      padding: 8px;
+      border-radius: 10px;
+      background: white;
+    }
+
+    .qrbox a {
+      color: var(--green);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    footer {
+      padding: 0 14px 28px;
+      color: #87918a;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 420px) {
+      .logo {
+        width: 130px;
+      }
+
+      .item {
+        gap: 9px;
+        padding: 12px;
+      }
+
+      .num {
+        flex-basis: 44px;
+        height: 44px;
+        font-size: 17px;
+      }
+
+      .name {
+        font-size: 14px;
+      }
+
+      .price {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img
+      src="logo-arte-alimentar.jpg"
+      alt="Logótipo Arte Alimentar"
+      class="logo"
+    >
+
+    <p class="tag" data-i18n="tag">Sabor que reúne</p>
+
+    <p class="intro" data-i18n="intro">
+      Escolhe pelo número e faz o teu pedido ao balcão.
+    </p>
+  </header>
+
+  <main class="wrap">
+    <div class="toolbar" aria-label="Idioma">
+      <button class="lang active" data-lang="pt" aria-pressed="true">
+        🇵🇹 Português
+      </button>
+      <button class="lang" data-lang="en" aria-pressed="false">
+        🇬🇧 English
+      </button>
+      <button class="lang" data-lang="es" aria-pressed="false">
+        🇪🇸 Español
+      </button>
+    </div>
+
+    <p class="hint" data-i18n="hint">
+      Memoriza o número do artigo para pedir mais depressa.
+    </p>
+
+    <h2 class="section-title" data-i18n="foodTitle">Comida</h2>
+    <div class="grid" id="food"></div>
+
+    <h2 class="section-title" data-i18n="drinksTitle">Bebidas</h2>
+    <div class="grid" id="drinks"></div>
+
+    <section class="qrbox">
+      <h2 data-i18n="qrTitle">
+        Abre a ementa no teu telemóvel
+      </h2>
+
+      <p data-i18n="qrText">
+        Lê este código QR para consultar a ementa digital.
+      </p>
+
+      <img
+        id="qr"
+        alt="QR Code da ementa Arte Alimentar"
+        width="200"
+        height="200"
+      >
+
+      <p>
+        <a
+          href="https://arte-alimentar-menu.vercel.app"
+          target="_blank"
+          rel="noopener"
+          data-i18n="openMenu"
+        >Abrir ementa digital</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>© Arte Alimentar</footer>
+
+  <script>
+    const menuUrl = "https://arte-alimentar-menu.vercel.app";
+
+    const foods = [
+      { n: "01", pt: "Bifana", en: "Portuguese pork sandwich", es: "Bocadillo de cerdo", p: "4,50 €" },
+      { n: "02", pt: "Cachorro-quente", en: "Hot dog", es: "Perrito caliente", p: "5,00 €" },
+      { n: "03", pt: "Sandes de panado de porco", en: "Breaded pork sandwich", es: "Bocadillo de cerdo empanado", p: "4,50 €" },
+      { n: "04", pt: "Sandes de panado de frango", en: "Breaded chicken sandwich", es: "Bocadillo de pollo empanado", p: "5,00 €" },
+      { n: "05", pt: "Sandes de presunto", en: "Cured ham sandwich", es: "Bocadillo de jamón curado", p: "5,00 €" },
+      { n: "06", pt: "Sandes de leitão", en: "Suckling pig sandwich", es: "Bocadillo de cochinillo", p: "8,50 €" },
+      { n: "07", pt: "Kebab de frango", en: "Chicken kebab", es: "Kebab de pollo", p: "6,50 €" },
+      { n: "08", pt: "Hambúrguer", en: "Burger", es: "Hamburguesa", p: "8,50 €" },
+      { n: "09", pt: "Prego no pão", en: "Portuguese beef steak sandwich", es: "Bocadillo de ternera", p: "8,00 €" }
+    ];
+
+    const drinks = [
+      { n: "10", pt: "Água 0,5 L", en: "Water 0.5 L", es: "Agua 0,5 L", p: "1,50 €" },
+      { n: "11", pt: "Água com gás", en: "Sparkling water", es: "Agua con gas", p: "2,00 €" },
+      { n: "12", pt: "Coca-Cola", en: "Coca-Cola", es: "Coca-Cola", p: "2,50 €" },
+      { n: "13", pt: "Coca-Cola Zero", en: "Coca-Cola Zero", es: "Coca-Cola Zero", p: "2,50 €" },
+      { n: "14", pt: "Fanta", en: "Fanta", es: "Fanta", p: "2,50 €" },
+      { n: "15", pt: "Sprite / 7Up", en: "Sprite / 7Up", es: "Sprite / 7Up", p: "2,50 €" },
+      { n: "16", pt: "Ice Tea", en: "Iced tea", es: "Té frío", p: "2,50 €" },
+      { n: "17", pt: "Sumos", en: "Juices", es: "Zumos", p: "2,50 €" },
+      { n: "18", pt: "Cerveja pequena", en: "Small beer", es: "Cerveza pequeña", p: "2,50 €" },
+      { n: "19", pt: "Cerveja sem álcool", en: "Non-alcoholic beer", es: "Cerveza sin alcohol", p: "2,50 €" },
+      { n: "20", pt: "Café", en: "Coffee", es: "Café", p: "1,50 €" },
+      { n: "21", pt: "Cerveja Grande", en: "Large beer", es: "Cerveza grande", p: "5,00 €" }
+    ];
+
+    const translations = {
+      pt: {
+        tag: "Sabor que reúne",
+        intro: "Escolhe pelo número e faz o teu pedido ao balcão.",
+        hint: "Memoriza o número do artigo para pedir mais depressa.",
+        foodTitle: "Comida",
+        drinksTitle: "Bebidas",
+        qrTitle: "Abre a ementa no teu telemóvel",
+        qrText: "Lê este código QR para consultar a ementa digital.",
+        openMenu: "Abrir ementa digital"
+      },
+      en: {
+        tag: "Flavour that brings us together",
+        intro: "Choose by number and place your order at the counter.",
+        hint: "Remember the item number to order faster.",
+        foodTitle: "Food",
+        drinksTitle: "Drinks",
+        qrTitle: "Open the menu on your phone",
+        qrText: "Scan this QR code to view the digital menu.",
+        openMenu: "Open digital menu"
+      },
+      es: {
+        tag: "Sabor que nos reúne",
+        intro: "Elige por número y haz tu pedido en el mostrador.",
+        hint: "Recuerda el número del artículo para pedir más rápido.",
+        foodTitle: "Comida",
+        drinksTitle: "Bebidas",
+        qrTitle: "Abre la carta en tu móvil",
+        qrText: "Escanea este código QR para consultar la carta digital.",
+        openMenu: "Abrir carta digital"
+      }
+    };
+
+    function renderItems(items, containerId, lang) {
+      const container = document.getElementById(containerId);
+      container.replaceChildren();
+
+      items.forEach(item => {
+        const card = document.createElement("article");
+        card.className = "item";
+
+        const number = document.createElement("div");
+        number.className = "num";
+        number.textContent = item.n;
+
+        const details = document.createElement("div");
+        details.className = "details";
+
+        const name = document.createElement("div");
+        name.className = "name";
+        name.textContent = item[lang];
+
+        const price = document.createElement("div");
+        price.className = "price";
+        price.textContent = item.p;
+
+        details.appendChild(name);
+        card.append(number, details, price);
+        container.appendChild(card);
+      });
+    }
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.dataset.i18n;
+        element.textContent = translations[lang][key];
+      });
+
+      document.querySelectorAll(".lang").forEach(button => {
+        const active = button.dataset.lang === lang;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      renderItems(foods, "food", lang);
+      renderItems(drinks, "drinks", lang);
+    }
+
+    document.querySelectorAll(".lang").forEach(button => {
+      button.addEventListener("click", () => {
+        setLanguage(button.dataset.lang);
+      });
+    });
+
+    // Gera o QR Code para o endereço público da ementa.
+    document.getElementById("qr").src =
+      "https://api.qrserver.com/v1/create-qr-code/" +
+      "?size=400x400&margin=8&data=" +
+      encodeURIComponent(menuUrl);
+
+    setLanguage("pt");
+  </script>
+</body>
+</html>
